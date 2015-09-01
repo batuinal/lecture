@@ -10,13 +10,24 @@ with questions for class!
     (double-precision floating point operations per second)?  Show how
     you computed this, and give URLs for where you got the parameters
     in your calculation.  (We will return to this question again after
-    we cover some computer architecture.)
+    we cover some computer architecture.) We did this last class, its in the slides there!?
     
+    12(cores/node) * 8(nodes) * 120 GF/s + 15*(1010.886 GF/s) = 26832.GF/S = 26.683 TF/s
+
+
 2.  What is the approximate theoretical peak flop rate for your own machine?
+2 flops/FMA (FMA is vector abc (A*b+c)
+X4 /VectorFMA FMA (256B/64B(Float, double precision number))
+X2 vector FMAs/cycle
+x2 cores
+2.3 GHZ --> 2.3 * 10^9 cycles/s 
+Final Answer is: 73.6 Gflop/s
+For single --> 147.2 GFlop/s
 
 3.  Suppose there are t tasks that can be executed in a pipeline
     with p stages.  What is the speedup over serial execution of the
     same tasks?
+    p + t -1 
 
 4.  Consider the following list of tasks (assume they can't be pipelined):
 
@@ -30,6 +41,7 @@ with questions for class!
     What is the minimum serial time between starting to compile and having
     a compiled application?  What is the minimum parallel time given
     an arbitrary number of processors?
+    My guess is 2.25 hr
 
 5.  Clone the membench repository from GitHub:
 
@@ -55,6 +67,8 @@ with questions for class!
 7.  Implement the following three methods of computing the centroid
     of a million two-dimensional coordinates (double precision).
     Time and determine which is faster:
+    
+    I DONT UNDERSTAND HOW TO GET centroid.c in the system so that I can compile and run it!!!!
 
     a.  Store an array of (x,y) coordinates; loop i and simultaneously
         sum the xi and yi
