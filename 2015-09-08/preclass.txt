@@ -1,4 +1,4 @@
-Pre-Class Questions:
+Pre-Class Questions: Batu Inal
 
 Consider the following naive row-based N x N matmul (matrix multiplication):
 
