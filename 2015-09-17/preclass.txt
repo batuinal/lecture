@@ -6,8 +6,15 @@ that you can figure out the numerical jargon.
 
 0.  How much time did you spend on this pre-class exercise, and when?
 
+    1.5 hours after class because I was not able to make class 
+    that day as I had an interview scheduled. I need to come to OH.
+
 1.  What are one or two points that you found least clear in the
     9/17 slide decks (including the narration)?
+
+    As I didn't remember ODE's very well I had to do some research to remember them,
+    then the material came somehow more relevant; however, since I couldn't attend class,
+    I would like to attend OH to undertsnad some of this material.
 
 2.  Fill in the most straightforward implementation you can think of
     for multiplying a compressed sparse row matrix by a vector.

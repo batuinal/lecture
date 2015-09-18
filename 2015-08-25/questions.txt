@@ -18,6 +18,10 @@ In practice, this took X time.  This includes
 Consider the following questions:
 
 1. What is a simple model that would predict this time?
-2. What about a simple model to predict time for one person to count?
-3. How big should the class be before the parallel method takes less time?
 
+2. What about a simple model to predict time for one person to count?
+
+Time to compute row counts*  (number of students in a row + num_rows)
+
+3. How big should the class be before the parallel method takes less time?
+Num rows  > Time of instructor counts + Time of instructor arithmetic

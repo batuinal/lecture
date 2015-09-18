@@ -11,20 +11,33 @@ for (i = 0; i < N; i++){
       C[i,j] = tmp
 }
 
-Suppose data is in double-precision floating point. We are interested in
+Suppose data is in double-precsion floating point. We are interested in
 estimating the memory-based arithmetic intensity (AI) of this code. The
 memory-based AI is defined that (# flops) / (# bytes transferred between memory
 and cache), and depends on the cache size. Suppose the cache uses a
 least-recently-used (LRU) policy for deciding which data to flush when moving
 something into an already-full cache.
 
+Total flops = 2N^3
+
+
+A) 1/2 million 10 * 10 1/2 Million AI = 1 flop per double load
+
+B) 1000x1000 * 1000*1000 AI = 2
+
+C) 10x10 * 10x10 AI = N
+
 1. Suppose 16N is significantly larger than the size of our L3 cache. What is
 the memory-based AI of this code? (Hint: What is the memory-based AI of just the
 innermost loop?)
 
+2 flops/2memory_acces = 1 flop per memory access
+
 
 2. Now suppose that the cache is substantially larger than 16N, but
 substantially smaller than 8N^2. What is the AI now?
+
+2 flops per memory access
 
 
 3. Now suppose the cache is large enough to hold all of A, B, and C. What is the
@@ -32,17 +45,28 @@ AI now? (Hint: Writing to a byte of memory not already in the cache incurs two
 memory transfers: one to move the data to the cache for writing, and one to move
 the written data back to main memory.)
 
+????
+
 
 4. Cache overflowing. On my CPU (Intel i7-4700 HQ), L1, L2, and L3 caches are 32
 KB, 256 KB, and 6 MB respectively. What is the largest problem size N that will
 fit in each cache? What is the arithmetic intensity associated with each problem
 size?
 
+The matrices all fit in the caches..
+For L1 $$: 2*N*N*8 <= 2^15  N is about 45 
+FOR L2 $$: 2*N*N*8 <= 2^18  N is about 128
+FOR L3 $$: 2*N*N*8 <= 6*2^20 N is about 627
+AI: N flops per memory access..
+
+6MB -> round to 8MB around 2^20 precision numbers divide cache into 3 caches take square root of that
 
 5. My CPU has 4 cores, each of which can do 8 fused multiply-adds per cycle, has
 a clock rate of 2.4 GHz, and a memory bandwidth of 25.6 GB/s. At what arithmetic
 intensity does my machine become CPU-bound?
 
+2.4*4cores*2flops*8FMA = 153.6GF/s
+AI: 153.6/25.6 = 6
 
 6. So, for what size range for N will naive matmul be CPU-bound on my machine?
 

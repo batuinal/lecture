@@ -8,13 +8,20 @@
     you should use a script to produce this plot, with both the serial
     fraction and the maximum number of cores as parameters.
 
+    Weak Scalling: 128-0.1* (128-1) = +115.3
+
 2.  Suppose a particular program can be partitioned into perfectly
     independent tasks, each of which takes time tau.  Tasks are
     set up, scheduled, and communicated to p workers at a (serial)
     central server; this takes an overhead time alpha per task.
     What is the theoretically achievable throughput (tasks/time)?
 
+    p/p+alpha = 1/alpha
+
 3.  Under what circumstances is it best to not tune?
+
+    When the engineering cost exceeds the benefits. When there are lots of bottlenecks
+    When you will make the code un-understanble.
 
 4.  The class cluster consists of eight nodes and fifteen Xeon Phi
     accelerator boards.  Based on an online search for information on
@@ -23,5 +30,8 @@
     you computed this, and give URLs for where you got the parameters
     in your calculation.  (We will return to this question again after
     we cover some computer architecture.)
+
+    1010.88GF/s: 16Flops/clock* 60(NUM_CORES)* 1.053GHz = 1010.88Gf/s.
+    96(Num_CORES)*120(Peak flop of Intel Proc in Gf/s)+15(ACELARATOR)*1010.88Gf/s
     
 5.  What is the approximate theoretical peak flop rate for your own machine?

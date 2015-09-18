@@ -3,12 +3,20 @@
    host cores are used, for the moment).  How do things change with
    the addition of the two Phi boards?
 
+   I beleive that at first there would be somehow of a linear increase then it would somehow
+   start to balance(as AI increases the relative GF/s increase would not be as much) 
+   and just turn into a contant straight line. (y_axis: GF/s, x_axis: Arithmetic Intensity)
+
 2. What is the difference between two cores and one core with
    hyperthreading?
+   H_threading can execute multiple instructions at a time on a signle cpu; whereas
+   two cores exceute 1 instruction per cycle.
 
 3. Do a Google search to find a picture of how memories are arranged
    on the Phi architecture.  Describe the setup briefly in your own
    words.  Is the memory access uniform or non-uniform?
+
+   http://arxiv.org/pdf/1310.5842 I am not sure, but I beleive it looks Uniform
 
 4. Consider the parallel dot product implementations suggested in the
    slides.  As a function of the number of processors, the size of the
@@ -17,3 +25,9 @@
    [Note that dot products have low arithmetic intensity -- the
     roofline model may be useful for reasoning about the peak
     performance for computing pieces of the dot product]
+
+    Each processor can compute its own partial answer, then send it over. So as the number of
+    processors increase the speedup would increase; however, as there may be bottlencks, vector size is constant,
+    where it becomes so saturated that the speed will eventually stabilize.
+
+    
