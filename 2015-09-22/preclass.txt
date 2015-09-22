@@ -1,7 +1,12 @@
 0.  How much time did you spend on this pre-class exercise, and when?
+2 hours, I reviewed multi=threading from my old OS notes. 
+I worked on the pre-class on Monday 9pm
 
 1.  What are one or two points that you found least clear in the
     9/22 slide decks (including the narration)?
+    I would have liked the class to more refernce as to where we can learn some of the mateial on the slides as they're in nature bit ambigious,
+    not filled with technical detail.
+    I DID not agree wuth the fact that "Deadlocks ->Doesn't always happen" :P
 
 2.  The pthread_mc.c file in the demo subdirectory runs a Monte Carlo
     simulation to estimate the expected value of a uniform random
@@ -13,16 +18,29 @@
        time per trial (t_trial), and time to update the global
        counters in the critical section (t_update).
 
+       In theory it should ideally be: time per trial t_trial = N/p
+       All trials finish in Nt_t/p time, total of N/b update global counters;
+       to Nt_u/b ---> so the total would be Nt_t/p + Nt_u/b
+
+
     b) Run the code with a few different parameter values in order
        to estimate N, t_trial, and t_update for this code on
        a totient compute node.
+
 
     c) Based on your model, suggest a strategy for choosing the batch
        size.  How might you generalize this strategy to automatically
        choose batch sizes for different types of computational
        experiments?
+
+       The batth size should be close to the number of processors, even equal,
+       as this would yield max effifecncy. The threads would not be waiting on the same source.
+       So we would be getting rid of, if not eliminating, Nt_u/b from the equation.
     
 3.  In the workq subdirectory of this directory, there is a basic work
     queue implementation.  Following the strategy outlined in the
     slides, add synchronization calls in the locations marked TODO.
     You should run the code to make sure it behaves as expected!
+
+    DONE!! Check code:)
+
