@@ -150,11 +150,13 @@ void workq_wait(workq_t* workq)
  */
 void workq_put(workq_t* workq, void* data)
 {
-    workq_lock(workq);
+    
     task_t* task = (task_t*) malloc(sizeof(task_t));
     task->data = data;
+    workq_lock(workq);
     task->next = workq->tasks;
     workq->tasks = task;
+    workq_signal(workq);
     workq_unlock(work);
 }
 
@@ -166,16 +168,18 @@ void workq_put(workq_t* workq, void* data)
  */
 void* workq_get(workq_t* workq)
 {
-    workq_lock(workq);
+    
     void* result = NULL;
+    workq_lock(workq);
+    workq_wait(workq);
     if (workq->tasks) {
         task_t* task = workq->tasks;
         result = task->data;
         workq->tasks = task->next;
         free(task);
     }
+    workq_unlock(workq);
     return result;
-    workq_lock(workq);
 }
 
 
@@ -189,9 +193,8 @@ void workq_finish(workq_t* workq)
 {
     workq_lock(workq);
     workq->done = 1;
-    workq_signal(workq);
-    workq_lock(workq);
-
+    workq_broadcast(workq);
+    workq_unlock(workq);
 }
 
 

@@ -14,13 +14,13 @@ I worked on the pre-class on Monday 9pm
     while "-b" sets the number of trials between synchronizations.
 
     a) Write a model for the run time for this simulation code in
-       terms of the number of trials (N), number of processors (p),
+       terms of the number of trials (N), batch size(B), number of processors (p),
        time per trial (t_trial), and time to update the global
        counters in the critical section (t_update).
 
        In theory it should ideally be: time per trial t_trial = N/p
        All trials finish in Nt_t/p time, total of N/b update global counters;
-       to Nt_u/b ---> so the total would be Nt_t/p + Nt_u/b
+       to Nt_u/b ---> so the total would be Nt_t/p + Nt_u/b (Correct!)
 
 
     b) Run the code with a few different parameter values in order
@@ -35,7 +35,14 @@ I worked on the pre-class on Monday 9pm
 
        The batth size should be close to the number of processors, even equal,
        as this would yield max effifecncy. The threads would not be waiting on the same source.
-       So we would be getting rid of, if not eliminating, Nt_u/b from the equation.
+       So we would be getting rid of, if not eliminating, Nt_u/b from the equation. (Completely wrong what wa I thinking..)
+
+       ->Correct answer: As batch size increases the time decreases! 
+       -> N = 10000240000, B1 = 10000, B2 = 20000, B3 = 5000, P = 24;
+       -> A = [N/B1, N/p; N/B2, N/p; N/B3, N/p]
+       -> b = [1.1, 1.09, 1.05]
+       answer = 3.06e-07, 2.56e-08
+       Make batch sizes smaller to make the answers more indicative
     
 3.  In the workq subdirectory of this directory, there is a basic work
     queue implementation.  Following the strategy outlined in the
