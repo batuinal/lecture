@@ -1,7 +1,12 @@
 0.  How much time did you spend on this pre-class exercise, and when?
 
+    I spent time after lecture as I had to travel.
+
 1.  What are one or two points that you found least clear in the
     9/24 slide decks (including the narration)?
+
+    I would have liked to seen more descriptive slides on what things like barriers did;
+    however, if you googled any of the concepts, their functionality was preety obvious.
 
 2.  The omp_mc.c file in the demo subdirectory runs a Monte Carlo
     simulation to estimate the expected value of a uniform random
@@ -12,10 +17,15 @@
        terms of the number of trials (N), number of processors (p),
        time per trial (t_trial), and time to update the global
        counters in the critical section (t_update).
+       t_update*(N/batch) + (N/p)*t_trial
 
     b) Run the code with a few different parameter values in order
        to estimate N, t_trial, and t_update for this code on
        a totient compute node.
+
+       For some reason I couldnt get the openmp to run from my version of gcc and
+       could not connect to the cluster (currently at the airport);
+       I will try running it on the cluster later; then record my results for 2b and 2c
 
     c) Based on your model, suggest a strategy for choosing the batch
        size.  How might you generalize this strategy to automatically
@@ -26,3 +36,12 @@
     performance and correctness) in OpenMP codes.  Go through the
     checklist in the paper for omp_mc.c.  What performance mistakes
     are there in the demonstration implementation?
+
+    - read of shared variables such as param and result are read without flush
+    "Simply put,when reading a shared variable without flushing it first, it is not guaranteed
+     to be up to date. "
+     - I feel like atomic would suffice; however critical is used, which is a hit on the performance,
+     the compiler can not optimize as much
+
+
+
