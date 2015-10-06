@@ -1,7 +1,14 @@
 0.  How much time did you spend on this pre-class exercise, and when?
 
+    October 6, started at 7:45. About 45 mins.
+    
 1.  What are one or two points that you found least clear in the
     10/06 slide decks (including the narration)?
+
+    I found them to be preety informative, I'm not sure why but I had hard time running the demo.
+    For some reason the scripts were not working, probably my fault though. I had to manually type them in the terminal.
+    Next time, could you please be more lucid on how to get them to work, for people like me, who can't even manage to run
+    a script :D Thank you!
 
 2.  In the upcoming lecture (10/8), we will discuss how to model
     latency and bandwidth of MPI sends and receives using the
@@ -14,6 +21,24 @@
        (under /usr/local/intel).  Using this version of MPI and the
        default PBS files, run the pingpong examples (demo/pingpong).
 
+        1 2.98754e-05
+        1001 3.06589e-05
+        2001 3.26086e-05
+        3001 3.31345e-05
+        4001 3.36633e-05
+        5001 3.46194e-05
+        6001 3.65194e-05
+        7001 3.72002e-05
+        8001 3.77138e-05
+        9001 3.94342e-05
+        10001 4.01595e-05
+        11001 4.28665e-05
+        12001 4.38294e-05
+        13001 4.5344e-05
+        14001 4.70147e-05
+        15001 4.81511e-05
+        16001 5.24333e-05
+
     b) Now do "module load openmpi/1.10.0-icc-15.0.3" after loading
        the CS 5220 module.  Check by typing "which mpicc" that you
        are now using a different version of mpicc.  Compile with
@@ -21,7 +46,30 @@
        you will have to add a module load to the start of the PBS
        scripts).  How do the timings differ from the Intel MPI timings?
 
+        1 4.91185e-07
+        1001 1.32456e-06
+        2001 1.28674e-06
+        3001 9.7447e-07
+        4001 1.18227e-06
+        5001 1.59912e-06
+        6001 1.7662e-06
+        7001 1.9551e-06
+        8001 2.13456e-06
+        9001 2.31537e-06
+        10001 2.57569e-06
+        11001 2.74144e-06
+        12001 2.97604e-06
+        13001 3.1904e-06
+        14001 3.40527e-06
+        15001 3.6323e-06
+        16001 3.83289e-06
+
+        There is on average 10 times difference between the two..
+
     c) When running at the peak rate (e.g. 16 double precision
        flops/cycle), how many (double precision) floating point ops
        could two totient cores do in the minimal time required for one
        MPI message exchange?
+
+       I don't know, but I'm curious to find out in class.
+
