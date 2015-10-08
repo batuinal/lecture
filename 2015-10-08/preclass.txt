@@ -1,7 +1,13 @@
 0.  How much time did you spend on this pre-class exercise, and when?
 
+    As I was out of town, I did the pre-class exercise right around the time of the class. 
+    I spent around half an hour or so on it.
+
 1.  What are one or two points that you found least clear in the
     10/08 slide decks (including the narration)?
+
+    I thought the slides were really good this time, especially the deck for MPI Deck2.
+    However, I was unable to get the audio to work, it might have been due to my internet connection though.
 
 2.  Now that we are now basically a third of the way into the
     semester, and are (mostly) settled into the steady pace of things,
@@ -10,12 +16,22 @@
     particularly useful -- venting about the cluster, for example, is
     understandable but doesn't help me that much in adjusting!
 
+    I believe this question was asked before the survey was posted on CMS.:)
+
+
 3.  The ring demo implements the protocol described in the particle
     systems slide deck from 9/15:
 
     http://cornell-cs5220-f15.github.io/slides/2015-09-15-particle.html#/11
 
     a) In your own words, describe what ring.c is doing.
+
+    Each processor generates some data refered to as particles, and each processor does
+    a calculation of its own data. Afterwards, each processor sends the data (in its buf)
+    onto a next processor(numbered one higher). After recieving the data from the previous
+    processor, the processor does another calculation with respect to the particle data it received.
+    This will be done as many times as the # of processors introduced in the system. The essential purpose
+    of the code is to analyze parameters such as tcomm and tcomp.
 
     b) How might you modify the code to have the same computational
        pattern, but using non-blocking communication rather than

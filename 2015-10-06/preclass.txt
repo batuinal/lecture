@@ -71,5 +71,8 @@
        could two totient cores do in the minimal time required for one
        MPI message exchange?
 
-       I don't know, but I'm curious to find out in class.
+       flop rate = 16*2.4e9*12 = 4.608e11
+       floprate*1,76497e-05 = 8.13298
+       floprate*2.8e-7 = 129024
+       floprate*2.8e-7/12 = 10752
 
